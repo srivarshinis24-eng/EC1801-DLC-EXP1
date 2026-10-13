@@ -20,10 +20,32 @@ exp1_boolean_min_tb.v	Verilog testbench
 exp1_boolean_min.vcd	VCD waveform dump generated during simulation
 
 ## Verilog Program
+```
+module fun (
+input wire A, 
+input wire B, 
+output wire F 
+); 
+assign F = (~A) | B ;    // F = A' + B 
+endmodule
+```
+
 
 
 
 ## TestBench Program
+```
+module tb;
+    reg A, B;
+    wire F;
+    // Instantiate the design under test (DUT)
+    fun uut (
+        .A(A),
+        .B(B),
+        .F(F)
+    );
+```
+
 
 
 
@@ -63,6 +85,8 @@ dve -full64 &
 A DVE environment will open.
 
 ## DVE Waveform Verification
+<img width="1920" height="1080" alt="Screenshot (24)" src="https://github.com/user-attachments/assets/13f4d930-5cc4-4af3-a2fc-3ec8f423a712" />
+
 In DVE:
 1.	Open the testbench hierarchy.
 2.	Locate the signals:
